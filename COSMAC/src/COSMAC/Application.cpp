@@ -1,6 +1,7 @@
 #include "Application.h"
 
-namespace COSMAC {
+namespace COSMAC
+{
 	Application::Application()
 	{
 

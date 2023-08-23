@@ -1,4 +1,4 @@
-# include <COSMAC.h>
+#include <COSMAC.h>
 
 class Sandbox : public COSMAC::Application
 {
@@ -16,5 +16,5 @@ public:
 
 COSMAC::Application* COSMAC::CreateApplication()
 {
-	return new Sandbox();
+	return new Sandbox(); 
 }

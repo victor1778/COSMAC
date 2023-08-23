@@ -2,7 +2,8 @@
 
 #include "Core.h"
 
-namespace COSMAC {
+namespace COSMAC 
+{
 	class COSMAC_API Application
 	{
 	public:

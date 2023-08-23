@@ -1,0 +1,3 @@
+[submodule "COSMAC/vendor/spdlog"]
+	path = COSMAC/vendor/spdlog
+	url = https://github.com/gabime/spdlog

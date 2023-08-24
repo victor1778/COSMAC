@@ -7,6 +7,12 @@
     <Filter Include="COSMAC\Events">
       <UniqueIdentifier>{DF217AF6-4BE2-F52C-141D-3FAA809C3A09}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Platform">
+      <UniqueIdentifier>{2AC788B4-1694-E3BF-3FAD-D1672BD9184E}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Platform\Windows">
+      <UniqueIdentifier>{64FBD71A-50F4-F66C-7926-DCF1657ED678}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\COSMAC.h" />
@@ -31,6 +37,12 @@
     <ClInclude Include="src\COSMAC\Log.h">
       <Filter>COSMAC</Filter>
     </ClInclude>
+    <ClInclude Include="src\COSMAC\Window.h">
+      <Filter>COSMAC</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Platform\Windows\WinWindow.h">
+      <Filter>Platform\Windows</Filter>
+    </ClInclude>
     <ClInclude Include="src\cpch.h" />
   </ItemGroup>
   <ItemGroup>
@@ -39,6 +51,9 @@
     </ClCompile>
     <ClCompile Include="src\COSMAC\Log.cpp">
       <Filter>COSMAC</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Platform\Windows\WinWindow.cpp">
+      <Filter>Platform\Windows</Filter>
     </ClCompile>
     <ClCompile Include="src\cpch.cpp" />
   </ItemGroup>

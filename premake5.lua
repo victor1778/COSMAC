@@ -4,10 +4,17 @@ workspace "COSMAC"
 
 outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 
+-- Include directories relative to root folder (solution directory)
+IncludeDir = {}
+IncludeDir["GLFW"] = "COSMAC/vendor/GLFW/include"
+
+include "COSMAC/vendor/GLFW"
+
 project "COSMAC"
 	location "COSMAC"
 	kind "SharedLib"
 	language "C++"
+	staticruntime "on"
 
 	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
 	objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
@@ -17,11 +24,12 @@ project "COSMAC"
 
 	files { "%{prj.name}/src/**.h", "%{prj.name}/src/**.cpp" }
 
-	includedirs { "%{prj.name}/vendor/spdlog/include", "%{prj.name}/src" }
+	includedirs { "%{prj.name}/vendor/spdlog/include", "%{prj.name}/src", "%{IncludeDir.GLFW}" }
+
+	links { "GLFW", "opengl32.lib", "dwmapi.lib" }
 
 	filter "system:windows"
 		cppdialect "C++17"
-		staticruntime "On"
 		systemversion "latest"
 
 		defines { "COSMAC_PLATFORM_WINDOWS", "COSMAC_BUILD_DLL" }
@@ -30,21 +38,22 @@ project "COSMAC"
 
 	filter "configurations:Debug"
 		defines "COSMAC_DEBUG"
-		symbols "On"
+		symbols "on"
 
 	filter "configurations:Release"
 		defines "COSMAC_RELEASE"
-		optimize "On"
+		optimize "on"
 
 	filter "configurations:Dist"
 		defines "COSMAC_DIST"
-		optimize "On"
+		optimize "on"
 
 
 project "Sandbox"
 	location "Sandbox"
 	kind "ConsoleApp"
 	language "C++"
+	staticruntime "on"
 
 	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
 	objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
@@ -57,19 +66,18 @@ project "Sandbox"
 
 	filter "system:windows"
 		cppdialect "C++17"
-		staticruntime "On"
 		systemversion "latest"
 
 		defines { "COSMAC_PLATFORM_WINDOWS" }
 
 	filter "configurations:Debug"
 		defines "COSMAC_DEBUG"
-		symbols "On"
+		symbols "on"
 
 	filter "configurations:Release"
 		defines "COSMAC_RELEASE"
-		optimize "On"
+		optimize "on"
 
 	filter "configurations:Dist"
 		defines "COSMAC_DIST"
-		optimize "On"
+		optimize "on"

@@ -12,6 +12,8 @@
 #include <unordered_map>
 #include <unordered_set>
 
+#include "COSMAC/Log.h"
+
 #ifdef COSMAC_PLATFORM_WINDOWS
 	#include <Windows.h>
 #endif

@@ -3,5 +3,5 @@
 bin/
 bin-int/
 
-# Directories
+# Files
 *.user

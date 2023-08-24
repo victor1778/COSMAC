@@ -2,8 +2,6 @@
 
 #include "Event.h"
 
-#include <sstream>
-
 namespace COSMAC {
 
 	class COSMAC_API KeyEvent : public Event

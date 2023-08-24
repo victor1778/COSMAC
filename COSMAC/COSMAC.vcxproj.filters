@@ -31,6 +31,7 @@
     <ClInclude Include="src\COSMAC\Log.h">
       <Filter>COSMAC</Filter>
     </ClInclude>
+    <ClInclude Include="src\cpch.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\COSMAC\Application.cpp">
@@ -39,5 +40,6 @@
     <ClCompile Include="src\COSMAC\Log.cpp">
       <Filter>COSMAC</Filter>
     </ClCompile>
+    <ClCompile Include="src\cpch.cpp" />
   </ItemGroup>
 </Project>

@@ -12,6 +12,9 @@ project "COSMAC"
 	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
 	objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
 
+	pchheader "cpch.h"
+	pchsource "COSMAC/src/cpch.cpp"
+
 	files { "%{prj.name}/src/**.h", "%{prj.name}/src/**.cpp" }
 
 	includedirs { "%{prj.name}/vendor/spdlog/include", "%{prj.name}/src" }

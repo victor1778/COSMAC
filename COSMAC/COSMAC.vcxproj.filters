@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="COSMAC">
+      <UniqueIdentifier>{5B0AEDA9-47AC-1780-3067-2BD41CA89ED0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="COSMAC\Events">
+      <UniqueIdentifier>{DF217AF6-4BE2-F52C-141D-3FAA809C3A09}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="src\COSMAC.h" />
+    <ClInclude Include="src\COSMAC\Application.h">
+      <Filter>COSMAC</Filter>
+    </ClInclude>
+    <ClInclude Include="src\COSMAC\Core.h">
+      <Filter>COSMAC</Filter>
+    </ClInclude>
+    <ClInclude Include="src\COSMAC\EntryPoint.h">
+      <Filter>COSMAC</Filter>
+    </ClInclude>
+    <ClInclude Include="src\COSMAC\Events\ApplicationEvent.h">
+      <Filter>COSMAC\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="src\COSMAC\Events\Event.h">
+      <Filter>COSMAC\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="src\COSMAC\Events\KeyEvent.h">
+      <Filter>COSMAC\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="src\COSMAC\Log.h">
+      <Filter>COSMAC</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="src\COSMAC\Application.cpp">
+      <Filter>COSMAC</Filter>
+    </ClCompile>
+    <ClCompile Include="src\COSMAC\Log.cpp">
+      <Filter>COSMAC</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>

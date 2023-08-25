@@ -152,7 +152,6 @@
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="src\COSMAC\Events\MouseEvent.h" />
     <ClInclude Include="src\COSMAC.h" />
     <ClInclude Include="src\COSMAC\Application.h" />
     <ClInclude Include="src\COSMAC\Core.h" />
@@ -160,6 +159,7 @@
     <ClInclude Include="src\COSMAC\Events\ApplicationEvent.h" />
     <ClInclude Include="src\COSMAC\Events\Event.h" />
     <ClInclude Include="src\COSMAC\Events\KeyEvent.h" />
+    <ClInclude Include="src\COSMAC\Events\MouseEvent.h" />
     <ClInclude Include="src\COSMAC\Log.h" />
     <ClInclude Include="src\COSMAC\Window.h" />
     <ClInclude Include="src\Platform\Windows\WinWindow.h" />

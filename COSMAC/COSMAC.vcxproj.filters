@@ -34,6 +34,9 @@
     <ClInclude Include="src\COSMAC\Events\KeyEvent.h">
       <Filter>COSMAC\Events</Filter>
     </ClInclude>
+    <ClInclude Include="src\COSMAC\Events\MouseEvent.h">
+      <Filter>COSMAC\Events</Filter>
+    </ClInclude>
     <ClInclude Include="src\COSMAC\Log.h">
       <Filter>COSMAC</Filter>
     </ClInclude>
@@ -44,7 +47,6 @@
       <Filter>Platform\Windows</Filter>
     </ClInclude>
     <ClInclude Include="src\cpch.h" />
-    <ClInclude Include="src\COSMAC\Events\MouseEvent.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\COSMAC\Application.cpp">

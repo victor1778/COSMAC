@@ -2,58 +2,53 @@
 
 #include "Event.h"
 
-namespace COSMAC {
+namespace COSMAC
+{
     /// <summary>
     ///  Mouse event class for move event and scroll event
     /// </summary>
-    class COSMAC_API MouseEvent : public Event
-    {
-    public:
-        inline float GetX() const { return m_X; }
-        inline float GetY() const { return m_Y; }
-           
-        EVENT_CLASS_CATEGORY(EventCategoryMouse | EventCategoryInput)
-    protected:
-        MouseEvent(float x, float y)
-            : m_X(x), m_Y(y) {}
-
-        float m_X, m_Y;
-    };
-
-    class COSMAC_API MouseMovedEvent : public MouseEvent
+    class COSMAC_API MouseMovedEvent : public Event
     {
     public:
         MouseMovedEvent(float x, float y)
-            : MouseEvent(x, y) {}
-        inline float GetX() const { return m_X; }
-        inline float GetY() const { return m_Y; }
+            : m_MouseX(x), m_MouseY(y) {}
 
+        inline float GetX() const { return m_MouseX; }
+        inline float GetY() const { return m_MouseY; }
 
         std::string ToString() const override
         {
             std::stringstream ss;
-            ss << "MouseMovedEvent: " << m_X << ", " << m_Y;
+            ss << "MouseMovedEvent: " << m_MouseX << ", " << m_MouseY;
             return ss.str();
         }
-
+        
         EVENT_CLASS_TYPE(MouseMoved)
+        EVENT_CLASS_CATEGORY(EventCategoryMouse | EventCategoryInput)
     private:
-        float m_X, m_Y;
+        float m_MouseX, m_MouseY;
     };
 
-    class COSMAC_API MouseScrolledEvent : public MouseEvent
+    class COSMAC_API MouseScrolledEvent : public Event
     {
     public:
-        MouseScrolledEvent(float offsetX, float offsetY)
-            : MouseEvent(offsetX, offsetY) {}
-        std::string ToString() const override
-        {
-            std::stringstream ss;
-            ss << "MouseScrolledEvent: " << m_X << ", " << m_Y;
-            return ss.str();
-        }
+        MouseScrolledEvent(float xOffset, float yOffset)
+            : m_XOffset(xOffset), m_YOffset(yOffset) {}
+
+		inline float GetXOffset() const { return m_XOffset; }
+		inline float GetYOffset() const { return m_YOffset; }
+
+		std::string ToString() const override
+		{
+			std::stringstream ss;
+			ss << "MouseScrolledEvent: " << GetXOffset() << ", " << GetYOffset();
+			return ss.str();
+		}
 
         EVENT_CLASS_TYPE(MouseScrolled)
+        EVENT_CLASS_CATEGORY(EventCategoryMouse | EventCategoryInput)
+    private:
+        float m_XOffset, m_YOffset;
     };
 
     class COSMAC_API MouseButtonEvent : public Event

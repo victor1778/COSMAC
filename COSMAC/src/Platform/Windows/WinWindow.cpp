@@ -53,28 +53,28 @@ namespace COSMAC
 
 		//Set GLFW event callbacks
 		glfwSetWindowSizeCallback(m_Window, [](GLFWwindow* window, int width, int height)
-			{
-				WindowData& data = *(WindowData*)glfwGetWindowUserPointer(window);
-				data.Width = width;
-				data.Height = height;
+		{
+			WindowData& data = *(WindowData*)glfwGetWindowUserPointer(window);
+			data.Width = width;
+			data.Height = height;
 
-				WindowResizeEvent event(width, height);
-				data.EventCallback(event);
-			});
+			WindowResizeEvent event(width, height);
+			data.EventCallback(event);
+		});
 
 		glfwSetWindowCloseCallback(m_Window, [](GLFWwindow* window)
-			{
-				WindowData& data = *(WindowData*)glfwGetWindowUserPointer(window);
-				WindowCloseEvent event;
-				data.EventCallback(event);
-			});
+		{
+			WindowData& data = *(WindowData*)glfwGetWindowUserPointer(window);
+			WindowCloseEvent event;
+			data.EventCallback(event);
+		});
 
 		glfwSetKeyCallback(m_Window, [](GLFWwindow* window, int key, int scancode, int action, int mods)
-			{
-				WindowData& data = *(WindowData*)glfwGetWindowUserPointer(window);
+		{
+			WindowData& data = *(WindowData*)glfwGetWindowUserPointer(window);
 
-				switch (action)
-				{
+			switch (action)
+			{
 				case GLFW_PRESS:
 				{
 					KeyPressedEvent event(key, 0);
@@ -93,8 +93,8 @@ namespace COSMAC
 					data.EventCallback(event);
 					break;
 				}
-				}
-			});
+			}
+		});
 
 		/// <summary>
 		/// Implements the mouse button callback function from openGL to the engine
@@ -114,60 +114,59 @@ namespace COSMAC
 					/// <summary>
 					/// If the action is pressed
 					/// </summary>
-				case GLFW_PRESS:
-				{
+					case GLFW_PRESS:
+					{
+						/// <summary>
+						/// Creates a mouse button pressed event
+						/// </summary>
+						MouseButtonPressedEvent event(button);
+						/// <summary>
+						/// Calls the event callback
+						/// </summary>
+						data.EventCallback(event);
+						break;
+					}
 					/// <summary>
-					/// Creates a mouse button pressed event
+					/// If the action is released
 					/// </summary>
-					MouseButtonPressedEvent event(button);
+					case GLFW_RELEASE:
+					{
+						/// <summary>
+						/// Creates a mouse button released event
+						/// </summary>
+						MouseButtonReleasedEvent event(button);
+						/// <summary>
+						/// Calls the event callback
+						/// </summary>
+						data.EventCallback(event);
+						break;
+					}
 					/// <summary>
-					/// Calls the event callback
+					/// Mouse moved event callback
 					/// </summary>
-					data.EventCallback(event);
-					break;
-				}
-				/// <summary>
-				/// If the action is released
-				/// </summary>
-				case GLFW_RELEASE:
-				{
-					/// <summary>
-					/// Creates a mouse button released event
-					/// </summary>
-					MouseButtonReleasedEvent event(button);
-					/// <summary>
-					/// Calls the event callback
-					/// </summary>
-					data.EventCallback(event);
-					break;
-				}
-				/// <summary>
-				/// Mouse moved event callback
-				/// </summary>
-				case GLFW_REPEAT:
-				{
-					/// <summary>
-					/// Creates a mouse button pressed event
-					/// </summary>
-					MouseButtonPressedEvent event(button);
-					/// <summary>		
-					/// Calls the event callback
-					/// </summary>
-					data.EventCallback(event);
-					break;
-				}
-
+					case GLFW_REPEAT:
+					{
+						/// <summary>
+						/// Creates a mouse button pressed event
+						/// </summary>
+						MouseButtonPressedEvent event(button);
+						/// <summary>		
+						/// Calls the event callback
+						/// </summary>
+						data.EventCallback(event);
+						break;
+					}
 				}
 			});
 
 		/// <summary>
 		/// Implements the mouse moved callback function from openGL to the engine
 		/// </summary>
-		glfwSetCursorPosCallback(m_Window, [](GLFWwindow* window, double offsetX, double offsetY)
+		glfwSetCursorPosCallback(m_Window, [](GLFWwindow* window, double xOffset, double yOffset)
 			{
 				WindowData& data = *(WindowData*)glfwGetWindowUserPointer(window);
 
-				MouseMovedEvent event((float)offsetX, (float)offsetY);
+				MouseMovedEvent event((float)xOffset, (float)yOffset);
 				data.EventCallback(event);
 
 
@@ -176,11 +175,11 @@ namespace COSMAC
 		/// <summary>
 		/// Implements the mouse scrolled callback function from openGL to the engine
 		/// </summary>
-		glfwSetScrollCallback(m_Window, [](GLFWwindow* window, double posX, double postY)
+		glfwSetScrollCallback(m_Window, [](GLFWwindow* window, double xPos, double yPost)
 			{
 				WindowData& data = *(WindowData*)glfwGetWindowUserPointer(window);
 
-				MouseScrolledEvent event((float)posX, (float)postY);
+				MouseScrolledEvent event((float)xPos, (float)yPost);
 				data.EventCallback(event);
 
 			});

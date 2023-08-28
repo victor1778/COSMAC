@@ -2,9 +2,9 @@
 
 #ifdef COSMAC_PLATFORM_WINDOWS
 
-extern COSMAC::Application* COSMAC::CreateApplication();
+extern COSMAC::Application *COSMAC::CreateApplication();
 
-int main(int argc, char** argv)
+int main(int argc, char **argv)
 {
 	COSMAC::Log::Init();
 

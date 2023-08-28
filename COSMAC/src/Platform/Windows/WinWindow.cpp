@@ -5,21 +5,23 @@
 #include "COSMAC/Events/KeyEvent.h"
 #include "COSMAC/Events/MouseEvent.h"
 
+#include "glad/glad.h"
+
 namespace COSMAC
 {
 	static bool s_GLFWInitialized = false;
 
-	static void GLFWErrorCallback(int error, const char* description)
+	static void GLFWErrorCallback(int error, const char *description)
 	{
 		COSMAC_CORE_ERROR("GLFW Error ({0}): {1}", error, description);
 	}
 
-	Window* Window::Create(const WindowProps& props)
+	Window *Window::Create(const WindowProps &props)
 	{
 		return new WinWindow(props);
 	}
 
-	WinWindow::WinWindow(const WindowProps& props)
+	WinWindow::WinWindow(const WindowProps &props)
 	{
 		Init(props);
 	}
@@ -29,7 +31,7 @@ namespace COSMAC
 		Shutdown();
 	}
 
-	void WinWindow::Init(const WindowProps& props)
+	void WinWindow::Init(const WindowProps &props)
 	{
 		m_Data.Title = props.Title;
 		m_Data.Width = props.Width;
@@ -42,7 +44,7 @@ namespace COSMAC
 			int success = glfwInit();
 			COSMAC_CORE_ASSERT(success, "Could not initialize GLFW!")
 
-				glfwSetErrorCallback(GLFWErrorCallback);
+			glfwSetErrorCallback(GLFWErrorCallback);
 			s_GLFWInitialized = true;
 		}
 
@@ -51,26 +53,24 @@ namespace COSMAC
 		glfwSetWindowUserPointer(m_Window, &m_Data);
 		SetVSync(true);
 
-		//Set GLFW event callbacks
-		glfwSetWindowSizeCallback(m_Window, [](GLFWwindow* window, int width, int height)
-		{
+		// Set GLFW event callbacks
+		glfwSetWindowSizeCallback(m_Window, [](GLFWwindow *window, int width, int height)
+								  {
 			WindowData& data = *(WindowData*)glfwGetWindowUserPointer(window);
 			data.Width = width;
 			data.Height = height;
 
 			WindowResizeEvent event(width, height);
-			data.EventCallback(event);
-		});
+			data.EventCallback(event); });
 
-		glfwSetWindowCloseCallback(m_Window, [](GLFWwindow* window)
-		{
+		glfwSetWindowCloseCallback(m_Window, [](GLFWwindow *window)
+								   {
 			WindowData& data = *(WindowData*)glfwGetWindowUserPointer(window);
 			WindowCloseEvent event;
-			data.EventCallback(event);
-		});
+			data.EventCallback(event); });
 
-		glfwSetKeyCallback(m_Window, [](GLFWwindow* window, int key, int scancode, int action, int mods)
-		{
+		glfwSetKeyCallback(m_Window, [](GLFWwindow *window, int key, int scancode, int action, int mods)
+						   {
 			WindowData& data = *(WindowData*)glfwGetWindowUserPointer(window);
 
 			switch (action)
@@ -93,14 +93,13 @@ namespace COSMAC
 					data.EventCallback(event);
 					break;
 				}
-			}
-		});
+			} });
 
 		/// <summary>
 		/// Implements the mouse button callback function from openGL to the engine
 		/// </summary>
-		glfwSetMouseButtonCallback(m_Window, [](GLFWwindow* window, int button, int action, int mods)
-			{
+		glfwSetMouseButtonCallback(m_Window, [](GLFWwindow *window, int button, int action, int mods)
+								   {
 				/// <summary>
 				/// Gets the window data from the window
 				/// </summary>
@@ -156,34 +155,29 @@ namespace COSMAC
 						data.EventCallback(event);
 						break;
 					}
-				}
-			});
+				} });
 
 		/// <summary>
 		/// Implements the mouse moved callback function from openGL to the engine
 		/// </summary>
-		glfwSetCursorPosCallback(m_Window, [](GLFWwindow* window, double xOffset, double yOffset)
-			{
-				WindowData& data = *(WindowData*)glfwGetWindowUserPointer(window);
+		glfwSetCursorPosCallback(m_Window, [](GLFWwindow *window, double xOffset, double yOffset)
+								 {
+									 WindowData &data = *(WindowData *)glfwGetWindowUserPointer(window);
 
-				MouseMovedEvent event((float)xOffset, (float)yOffset);
-				data.EventCallback(event);
-
-
-			});
+									 MouseMovedEvent event((float)xOffset, (float)yOffset);
+									 data.EventCallback(event);
+								 });
 
 		/// <summary>
 		/// Implements the mouse scrolled callback function from openGL to the engine
 		/// </summary>
-		glfwSetScrollCallback(m_Window, [](GLFWwindow* window, double xPos, double yPost)
-			{
-				WindowData& data = *(WindowData*)glfwGetWindowUserPointer(window);
+		glfwSetScrollCallback(m_Window, [](GLFWwindow *window, double xPos, double yPost)
+							  {
+								  WindowData &data = *(WindowData *)glfwGetWindowUserPointer(window);
 
-				MouseScrolledEvent event((float)xPos, (float)yPost);
-				data.EventCallback(event);
-
-			});
-
+								  MouseScrolledEvent event((float)xPos, (float)yPost);
+								  data.EventCallback(event);
+							  });
 	}
 	void WinWindow::Shutdown()
 	{

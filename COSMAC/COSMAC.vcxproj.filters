@@ -37,6 +37,12 @@
     <ClInclude Include="src\COSMAC\Events\MouseEvent.h">
       <Filter>COSMAC\Events</Filter>
     </ClInclude>
+    <ClInclude Include="src\COSMAC\Layer.h">
+      <Filter>COSMAC</Filter>
+    </ClInclude>
+    <ClInclude Include="src\COSMAC\LayerStack.h">
+      <Filter>COSMAC</Filter>
+    </ClInclude>
     <ClInclude Include="src\COSMAC\Log.h">
       <Filter>COSMAC</Filter>
     </ClInclude>
@@ -50,6 +56,12 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\COSMAC\Application.cpp">
+      <Filter>COSMAC</Filter>
+    </ClCompile>
+    <ClCompile Include="src\COSMAC\Layer.cpp">
+      <Filter>COSMAC</Filter>
+    </ClCompile>
+    <ClCompile Include="src\COSMAC\LayerStack.cpp">
       <Filter>COSMAC</Filter>
     </ClCompile>
     <ClCompile Include="src\COSMAC\Log.cpp">

@@ -2,7 +2,8 @@
 
 #include "Event.h"
 
-namespace COSMAC {
+namespace COSMAC
+{
 
 	class COSMAC_API KeyEvent : public Event
 	{

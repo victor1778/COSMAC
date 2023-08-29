@@ -1,5 +1,6 @@
 workspace "COSMAC"
    architecture "x64"
+   startproject "Sandbox"
    configurations { "Debug", "Release", "Dist" }
 
 outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
@@ -8,15 +9,20 @@ outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 IncludeDir = {}
 IncludeDir["GLFW"] = "COSMAC/vendor/GLFW/include"
 IncludeDir["Glad"] = "COSMAC/vendor/Glad/include"
+IncludeDir["ImGui"] = "COSMAC/vendor/imgui"
 
-include "COSMAC/vendor/GLFW"
-include "COSMAC/vendor/Glad"
+group "Dependencies"
+	include "COSMAC/vendor/GLFW"
+	include "COSMAC/vendor/Glad"
+	include "COSMAC/vendor/imgui"
+
+group ""
 
 project "COSMAC"
 	location "COSMAC"
 	kind "SharedLib"
 	language "C++"
-	staticruntime "on"
+	staticruntime "off"
 
 	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
 	objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
@@ -26,9 +32,9 @@ project "COSMAC"
 
 	files { "%{prj.name}/src/**.h", "%{prj.name}/src/**.cpp" }
 
-	includedirs { "%{prj.name}/vendor/spdlog/include", "%{prj.name}/src", "%{IncludeDir.GLFW}", "%{IncludeDir.Glad}" }
+	includedirs { "%{prj.name}/vendor/spdlog/include", "%{prj.name}/src", "%{IncludeDir.GLFW}", "%{IncludeDir.Glad}", "%{IncludeDir.ImGui}" }
 
-	links { "GLFW", "Glad", "opengl32.lib", "dwmapi.lib" }
+	links { "GLFW", "Glad", "ImGui", "opengl32.lib", "dwmapi.lib" }
 
 	filter "system:windows"
 		cppdialect "C++17"
@@ -36,21 +42,21 @@ project "COSMAC"
 
 		defines { "COSMAC_PLATFORM_WINDOWS", "COSMAC_BUILD_DLL", "GLFW_INCLUDE_NONE" }
 
-		postbuildcommands { "{COPY} %{cfg.buildtarget.relpath} ../bin/" .. outputdir .. "/Sandbox"}
+		postbuildcommands { "{COPY} %{cfg.buildtarget.relpath} \"../bin/" .. outputdir .. "/Sandbox/\""}
 
 	filter "configurations:Debug"
 		defines "COSMAC_DEBUG"
-		buildoptions "/MDd"
+		runtime "Debug"
 		symbols "on"
 
 	filter "configurations:Release"
 		defines "COSMAC_RELEASE"
-		buildoptions "/MD"
+		runtime "Release"
 		optimize "on"
 
 	filter "configurations:Dist"
 		defines "COSMAC_DIST"
-		buildoptions "/MD"
+		runtime "Release"
 		optimize "on"
 
 
@@ -58,7 +64,7 @@ project "Sandbox"
 	location "Sandbox"
 	kind "ConsoleApp"
 	language "C++"
-	staticruntime "on"
+	staticruntime "off"
 
 	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
 	objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
@@ -77,15 +83,15 @@ project "Sandbox"
 
 	filter "configurations:Debug"
 		defines "COSMAC_DEBUG"
-		buildoptions "/MDd"
+		runtime "Debug"
 		symbols "on"
 
 	filter "configurations:Release"
 		defines "COSMAC_RELEASE"
-		buildoptions "/MD"
+		runtime "Release"
 		optimize "on"
 
 	filter "configurations:Dist"
 		defines "COSMAC_DIST"
-		buildoptions "/MD"
+		runtime "Release"
 		optimize "on"

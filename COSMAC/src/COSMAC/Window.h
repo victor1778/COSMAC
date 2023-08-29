@@ -18,7 +18,7 @@ namespace COSMAC
 		unsigned int Height;
 
 		// Constructor with default values for title, width, and height
-		WindowProps(const std::string &title = "COSMAC Emulator", unsigned int width = 800, unsigned int height = 600)
+		WindowProps(const std::string &title = "COSMAC Emulator", unsigned int width = 1280, unsigned int height = 720)
 			: Title(title), Width(width), Height(height)
 		{
 		}

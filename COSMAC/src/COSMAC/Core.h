@@ -1,17 +1,21 @@
 #pragma once
 
 #ifdef COSMAC_PLATFORM_WINDOWS
+#if COSMAC_DYNAMIC_LINK
 	#ifdef COSMAC_BUILD_DLL
 		#define COSMAC_API __declspec(dllexport)
 	#else
 		#define COSMAC_API __declspec(dllimport)
 	#endif //COSMAC_BUILD_DLL
 #else
+	#define COSMAC_API
+#endif //COSMAC_DYNAMIC_LINK
+#else
 	#error COSMAC only supports Windows!
 #endif //COSMAC_PLATFORM_WINDOWS
 
 #ifdef COSMAC_DEBUG
-	#define HZ_ENABLE_ASSERTS
+	#define COSMAC_ENABLE_ASSERTS
 #endif
 
 #ifdef COSMAC_ENABLE_ASSERTS

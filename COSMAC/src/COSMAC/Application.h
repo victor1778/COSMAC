@@ -7,6 +7,8 @@
 #include "COSMAC/Events/Event.h"
 #include "COSMAC/Events/ApplicationEvent.h"
 
+#include "COSMAC/ImGui/ImGuiLayer.h"
+
 namespace COSMAC
 {
 	class COSMAC_API Application
@@ -29,6 +31,7 @@ namespace COSMAC
 		bool OnWindowClose(WindowCloseEvent &e);
 
 		std::unique_ptr<Window> m_Window;
+		ImGuiLayer* m_ImGuiLayer;
 		bool m_Running = true;
 		LayerStack m_LayerStack;
 

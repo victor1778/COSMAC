@@ -20,9 +20,10 @@ group ""
 
 project "COSMAC"
 	location "COSMAC"
-	kind "SharedLib"
+	kind "StaticLib"
 	language "C++"
-	staticruntime "off"
+	cppdialect "C++17"
+	staticruntime "on"
 
 	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
 	objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
@@ -37,7 +38,6 @@ project "COSMAC"
 	links { "GLFW", "Glad", "ImGui", "opengl32.lib", "dwmapi.lib" }
 
 	filter "system:windows"
-		cppdialect "C++17"
 		systemversion "latest"
 
 		defines { "COSMAC_PLATFORM_WINDOWS", "COSMAC_BUILD_DLL", "GLFW_INCLUDE_NONE" }
@@ -64,19 +64,19 @@ project "Sandbox"
 	location "Sandbox"
 	kind "ConsoleApp"
 	language "C++"
-	staticruntime "off"
+	cppdialect "C++17"
+	staticruntime "on"
 
 	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
 	objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
 
 	files { "%{prj.name}/src/**.h", "%{prj.name}/src/**.cpp" }
 
-	includedirs { "COSMAC/vendor/spdlog/include", "COSMAC/src" }
+	includedirs { "COSMAC/vendor/spdlog/include", "COSMAC/src", "COSMAC/vendor" }
 
 	links { "COSMAC" }
 
 	filter "system:windows"
-		cppdialect "C++17"
 		systemversion "latest"
 
 		defines { "COSMAC_PLATFORM_WINDOWS" }

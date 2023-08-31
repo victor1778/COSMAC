@@ -6,8 +6,7 @@ namespace COSMAC
     // Constructor for the LayerStack class.
     LayerStack::LayerStack()
     {
-        // Initialize the iterator for layer insertion at the beginning of the layers list.
-        m_LayerInsert = m_Layers.begin();
+
     }
 
     // Destructor for the LayerStack class.
@@ -21,14 +20,13 @@ namespace COSMAC
     // Add a new layer to the layer stack before the current insertion point.
     void LayerStack::PushLayer(Layer *layer)
     {
-        // Insert the new layer before the current insertion point in the layers list.
-        m_LayerInsert = m_Layers.emplace(m_LayerInsert, layer);
+        m_Layers.emplace(m_Layers.begin() + m_LayerInsertIndex, layer);
+        m_LayerInsertIndex++;
     }
 
     // Add an overlay layer to the top of the layer stack.
     void LayerStack::PushOverlay(Layer *overlay)
     {
-        // Add the overlay layer to the end of the layers list.
         m_Layers.emplace_back(overlay);
     }
 
@@ -41,9 +39,7 @@ namespace COSMAC
         {
             // Erase the layer from the layers list.
             m_Layers.erase(it);
-
-            // Update the insertion point iterator to maintain correct positioning.
-            m_LayerInsert--;
+            m_LayerInsertIndex--;
         }
     }
 

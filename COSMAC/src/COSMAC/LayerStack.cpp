@@ -22,12 +22,14 @@ namespace COSMAC
     {
         m_Layers.emplace(m_Layers.begin() + m_LayerInsertIndex, layer);
         m_LayerInsertIndex++;
+        layer->OnAttach();
     }
 
     // Add an overlay layer to the top of the layer stack.
     void LayerStack::PushOverlay(Layer *overlay)
     {
         m_Layers.emplace_back(overlay);
+        overlay->OnAttach();
     }
 
     // Remove a layer from the layer stack.
@@ -40,6 +42,7 @@ namespace COSMAC
             // Erase the layer from the layers list.
             m_Layers.erase(it);
             m_LayerInsertIndex--;
+            layer->OnDetach();
         }
     }
 
@@ -52,6 +55,7 @@ namespace COSMAC
         {
             // Erase the overlay layer from the layers list.
             m_Layers.erase(it);
+            overlay->OnDetach();
         }
     }
 }

@@ -10,8 +10,14 @@
     <Filter Include="COSMAC\ImGui">
       <UniqueIdentifier>{C597083E-B1FA-97E2-5A80-D09846C26365}</UniqueIdentifier>
     </Filter>
+    <Filter Include="COSMAC\Renderer">
+      <UniqueIdentifier>{61248574-CDAF-F238-D6C0-752D42CB4E39}</UniqueIdentifier>
+    </Filter>
     <Filter Include="Platform">
       <UniqueIdentifier>{2AC788B4-1694-E3BF-3FAD-D1672BD9184E}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Platform\OpenGL">
+      <UniqueIdentifier>{1E7D2C1D-8A08-9AE1-9319-1DD6FF23F6E1}</UniqueIdentifier>
     </Filter>
     <Filter Include="Platform\Windows">
       <UniqueIdentifier>{64FBD71A-50F4-F66C-7926-DCF1657ED678}</UniqueIdentifier>
@@ -61,8 +67,14 @@
     <ClInclude Include="src\COSMAC\MouseButtonCodes.h">
       <Filter>COSMAC</Filter>
     </ClInclude>
+    <ClInclude Include="src\COSMAC\Renderer\GraphicsContext.h">
+      <Filter>COSMAC\Renderer</Filter>
+    </ClInclude>
     <ClInclude Include="src\COSMAC\Window.h">
       <Filter>COSMAC</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Platform\OpenGL\OpenGLContext.h">
+      <Filter>Platform\OpenGL</Filter>
     </ClInclude>
     <ClInclude Include="src\Platform\Windows\WinInput.h">
       <Filter>Platform\Windows</Filter>
@@ -90,6 +102,9 @@
     </ClCompile>
     <ClCompile Include="src\COSMAC\Log.cpp">
       <Filter>COSMAC</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Platform\OpenGL\OpenGLContext.cpp">
+      <Filter>Platform\OpenGL</Filter>
     </ClCompile>
     <ClCompile Include="src\Platform\Windows\WinInput.cpp">
       <Filter>Platform\Windows</Filter>

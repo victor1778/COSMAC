@@ -33,6 +33,8 @@ project "COSMAC"
 
 	files { "%{prj.name}/src/**.h", "%{prj.name}/src/**.cpp" }
 
+	defines { "_CRT_SECURE_NO_WARNINGS" }
+
 	includedirs { "%{prj.name}/vendor/spdlog/include", "%{prj.name}/src", "%{IncludeDir.GLFW}", "%{IncludeDir.Glad}", "%{IncludeDir.ImGui}" }
 
 	links { "GLFW", "Glad", "ImGui", "opengl32.lib", "dwmapi.lib" }

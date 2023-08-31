@@ -1,6 +1,7 @@
 #pragma once
 
 #include "COSMAC/Window.h"
+#include "COSMAC/Renderer/GraphicsContext.h"
 
 #include <GLFW/glfw3.h>
 
@@ -28,6 +29,7 @@ namespace COSMAC
 		virtual void Shutdown();
 
 		GLFWwindow *m_Window;
+		GraphicsContext* m_Context;
 
 		struct WindowData
 		{

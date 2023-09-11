@@ -84,6 +84,9 @@
     </ClInclude>
     <ClInclude Include="src\cpch.h" />
     <ClInclude Include="src\COSMAC\Renderer\Shader.h" />
+    <ClInclude Include="src\COSMAC\Renderer\Buffer.h" />
+    <ClInclude Include="src\Platform\OpenGL\OpenGLBuffer.h" />
+    <ClInclude Include="src\COSMAC\Renderer\Renderer.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\COSMAC\Application.cpp">
@@ -115,5 +118,8 @@
     </ClCompile>
     <ClCompile Include="src\cpch.cpp" />
     <ClCompile Include="src\COSMAC\Renderer\Shader.cpp" />
+    <ClCompile Include="src\COSMAC\Renderer\Buffer.cpp" />
+    <ClCompile Include="src\Platform\OpenGL\OpenGLBuffer.cpp" />
+    <ClCompile Include="src\COSMAC\Renderer\Renderer.cpp" />
   </ItemGroup>
 </Project>

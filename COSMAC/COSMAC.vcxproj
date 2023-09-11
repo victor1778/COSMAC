@@ -152,6 +152,7 @@
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="src\COSMAC\Renderer\Shader.h" />
     <ClInclude Include="src\COSMAC.h" />
     <ClInclude Include="src\COSMAC\Application.h" />
     <ClInclude Include="src\COSMAC\Core.h" />
@@ -175,6 +176,7 @@
     <ClInclude Include="src\cpch.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\COSMAC\Renderer\Shader.cpp" />
     <ClCompile Include="src\COSMAC\Application.cpp" />
     <ClCompile Include="src\COSMAC\ImGui\ImGuiBuild.cpp" />
     <ClCompile Include="src\COSMAC\ImGui\ImGuiLayer.cpp" />

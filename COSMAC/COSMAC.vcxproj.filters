@@ -83,6 +83,7 @@
       <Filter>Platform\Windows</Filter>
     </ClInclude>
     <ClInclude Include="src\cpch.h" />
+    <ClInclude Include="src\COSMAC\Renderer\Shader.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\COSMAC\Application.cpp">
@@ -113,5 +114,6 @@
       <Filter>Platform\Windows</Filter>
     </ClCompile>
     <ClCompile Include="src\cpch.cpp" />
+    <ClCompile Include="src\COSMAC\Renderer\Shader.cpp" />
   </ItemGroup>
 </Project>

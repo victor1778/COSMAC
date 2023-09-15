@@ -11,9 +11,9 @@ namespace COSMAC
 	{
 		switch (Renderer::GetAPI())
 		{
-		case RendererAPI::None:
+		case RendererAPI::API::None:
 			COSMAC_CORE_ASSERT(false, "RendererAPI::None currently not supported.");
-		case RendererAPI::OpenGL:
+		case RendererAPI::API::OpenGL:
 			return new OpenGLVertexBuffer(vertices, size);
 		}
 
@@ -25,9 +25,9 @@ namespace COSMAC
 	{
 		switch (Renderer::GetAPI())
 		{
-		case RendererAPI::None:
+		case RendererAPI::API::None:
 			COSMAC_CORE_ASSERT(false, "RendererAPI::None currently not supported.");
-		case RendererAPI::OpenGL:
+		case RendererAPI::API::OpenGL:
 			return new OpenGLIndexBuffer(indices, size);
 		}
 

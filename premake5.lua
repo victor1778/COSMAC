@@ -10,13 +10,11 @@ IncludeDir = {}
 IncludeDir["GLFW"] = "COSMAC/vendor/GLFW/include"
 IncludeDir["Glad"] = "COSMAC/vendor/Glad/include"
 IncludeDir["ImGui"] = "COSMAC/vendor/imgui"
+IncludeDir["glm"] = "COSMAC/vendor/glm"
 
-group "Dependencies"
-	include "COSMAC/vendor/GLFW"
-	include "COSMAC/vendor/Glad"
-	include "COSMAC/vendor/imgui"
-
-group ""
+include "COSMAC/vendor/GLFW"
+include "COSMAC/vendor/Glad"
+include "COSMAC/vendor/imgui"
 
 project "COSMAC"
 	location "COSMAC"
@@ -31,11 +29,11 @@ project "COSMAC"
 	pchheader "cpch.h"
 	pchsource "COSMAC/src/cpch.cpp"
 
-	files { "%{prj.name}/src/**.h", "%{prj.name}/src/**.cpp" }
+	files { "%{prj.name}/src/**.h", "%{prj.name}/src/**.cpp", "%{prj.name}/vendor/glm/glm/**.hpp", "%{prj.name}/vendor/glm/glm/**.inl" }
 
 	defines { "_CRT_SECURE_NO_WARNINGS" }
 
-	includedirs { "%{prj.name}/vendor/spdlog/include", "%{prj.name}/src", "%{IncludeDir.GLFW}", "%{IncludeDir.Glad}", "%{IncludeDir.ImGui}" }
+	includedirs { "%{prj.name}/vendor/spdlog/include", "%{prj.name}/src", "%{IncludeDir.GLFW}", "%{IncludeDir.Glad}", "%{IncludeDir.ImGui}", "%{IncludeDir.glm}" }
 
 	links { "GLFW", "Glad", "ImGui", "opengl32.lib", "dwmapi.lib" }
 
@@ -74,7 +72,7 @@ project "Sandbox"
 
 	files { "%{prj.name}/src/**.h", "%{prj.name}/src/**.cpp" }
 
-	includedirs { "COSMAC/vendor/spdlog/include", "COSMAC/src", "COSMAC/vendor" }
+	includedirs { "COSMAC/vendor/spdlog/include", "COSMAC/src", "COSMAC/vendor", "COSMAC/vendor/glm" }
 
 	links { "COSMAC" }
 

@@ -7,3 +7,6 @@
 [submodule "COSMAC/vendor/imgui"]
 	path = COSMAC/vendor/imgui
 	url = https://github.com/victor1778/imgui
+[submodule "COSMAC/vendor/glm"]
+	path = COSMAC/vendor/glm
+	url = https://github.com/g-truc/glm

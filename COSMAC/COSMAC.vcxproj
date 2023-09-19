@@ -152,6 +152,7 @@
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="src\Platform\OpenGL\OpenGLShader.h" />
     <ClInclude Include="src\COSMAC.h" />
     <ClInclude Include="src\COSMAC\Application.h" />
     <ClInclude Include="src\COSMAC\Core.h" />
@@ -602,6 +603,7 @@
     <ClInclude Include="vendor\glm\glm\vector_relational.hpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\Platform\OpenGL\OpenGLShader.cpp" />
     <ClCompile Include="src\COSMAC\Application.cpp" />
     <ClCompile Include="src\COSMAC\ImGui\ImGuiBuild.cpp" />
     <ClCompile Include="src\COSMAC\ImGui\ImGuiLayer.cpp" />

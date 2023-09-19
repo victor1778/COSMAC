@@ -1,13 +1,16 @@
 #include <COSMAC.h>
 #include "imgui/imgui.h"
 
+#include "Platform/OpenGL/OpenGLShader.h"
+
 #include <glm/gtc/matrix_transform.hpp>
+#include <glm/gtc/type_ptr.hpp>
 
 class ExampleLayer : public COSMAC::Layer
 {
 public:
 	ExampleLayer()
-		: Layer("Example"), m_Camera(-1.6f, 1.6f, -0.9f, 0.9f), m_CameraPosition(1.0f), m_SquarePos(0.0f)
+		: Layer("Example"), m_Camera(-1.6f, 1.6f, -0.9f, 0.9f), m_CameraPosition(0.5f, 0.5f, 0.0f), m_SquarePos(0.0f)
 	{
 
 		std::string vertex_src = R"(
@@ -34,13 +37,15 @@ public:
 
 			in vec3 v_Position;
 
+			uniform vec3 u_Color;
+
 			void main()
 			{
-				color = vec4(1.0, 1.0, 1.0, 1.0);
+				color = vec4(u_Color, 1.0);
 			}
 		)";
 
-		m_Shader.reset(new COSMAC::Shader(vertex_src, fragment_src));
+		m_Shader.reset(COSMAC::Shader::Create(vertex_src, fragment_src));
 
 		m_VertexArray.reset(COSMAC::VertexArray::Create());
 
@@ -51,7 +56,7 @@ public:
 			-0.5f,  0.5f, 0.0f
 		};
 
-		std::shared_ptr<COSMAC::VertexBuffer> VertexBuffer;
+		COSMAC::Ref<COSMAC::VertexBuffer> VertexBuffer;
 		VertexBuffer.reset(COSMAC::VertexBuffer::Create(vertices, sizeof(vertices)));
 		COSMAC::BufferLayout layout = {
 			{ COSMAC::ShaderDataType::Float3, "a_Position" }
@@ -60,7 +65,7 @@ public:
 		m_VertexArray->AddVertexBuffer(VertexBuffer);
 
 		uint32_t indices[] = { 0, 1, 2, 2, 3, 0 };
-		std::shared_ptr<COSMAC::IndexBuffer> IndexBuffer;
+		COSMAC::Ref<COSMAC::IndexBuffer> IndexBuffer;
 		IndexBuffer.reset(COSMAC::IndexBuffer::Create(indices, sizeof(indices) / sizeof(uint32_t)));
 		m_VertexArray->SetIndexBuffer(IndexBuffer);
 
@@ -81,9 +86,12 @@ public:
 
 		static glm::mat4 scale = glm::scale(glm::mat4(1.0f), glm::vec3(0.1f));
 
-		for (int y = 0; y < 20; y++)
+		std::dynamic_pointer_cast<COSMAC::OpenGLShader>(m_Shader)->Bind();
+		std::dynamic_pointer_cast<COSMAC::OpenGLShader>(m_Shader)->UploadUniformFloat3("u_Color", m_Color);
+
+		for (int y = 0; y < 10; y++)
 		{
-			for (int x = 0; x < 20; x++)
+			for (int x = 0; x < 10; x++)
 			{
 				glm::vec3 pos(x * 0.11f, y * 0.11f, 0.0f);
 				glm::mat4 transform = glm::translate(glm::mat4(1.0f), pos) * scale;
@@ -150,7 +158,7 @@ public:
         }
 
         ImGui::Begin("COSMAC - Viewport");
-        ImGui::Text("This is nothing but a humble test...");
+        ImGui::ColorEdit3("Square Color", glm::value_ptr(m_Color));
         ImGui::End();
 
         ImGui::End();
@@ -161,17 +169,16 @@ public:
 	}
 
 private:
-    std::shared_ptr<COSMAC::Shader> m_Shader;
-    std::shared_ptr<COSMAC::VertexArray> m_VertexArray;
+    COSMAC::Ref<COSMAC::Shader> m_Shader;
+    COSMAC::Ref<COSMAC::VertexArray> m_VertexArray;
 
 	glm::vec3 m_SquarePos;
 
 	COSMAC::OrthographicCamera m_Camera;
 	glm::vec3 m_CameraPosition;
-	float m_CameraMoveSpeed = 5.0f;
-
 	float m_CameraRotation = 0.0f;
-	float m_CameraRotationSpeed = 180.0f;
+
+	glm::vec3 m_Color = { 0.8f, 0.2f, 0.3f };
 };
 
 class Sandbox : public COSMAC::Application

@@ -4,6 +4,8 @@
 #include "COSMAC/Layer.h"
 #include "COSMAC/Log.h"
 
+#include "COSMAC/Core/Timestep.h"
+
 #include "COSMAC/Input.h"
 #include "COSMAC/KeyCodes.h"
 #include "COSMAC/MouseButtonCodes.h"

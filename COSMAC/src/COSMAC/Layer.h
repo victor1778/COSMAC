@@ -3,6 +3,8 @@
 #include "COSMAC/Core.h"
 #include "COSMAC/Events/Event.h"
 
+#include "COSMAC/Core/Timestep.h"
+
 namespace COSMAC
 {
 	class COSMAC_API Layer
@@ -13,7 +15,7 @@ namespace COSMAC
 
 		virtual void OnAttach() {}
 		virtual void OnDetach() {}
-		virtual void OnUpdate() {}
+		virtual void OnUpdate(Timestep ts) {}
 		virtual void OnImGuiRender() {}
 		virtual void OnEvent(Event &event) {}
 

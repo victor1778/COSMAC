@@ -7,11 +7,9 @@
 #include "COSMAC/Events/Event.h"
 #include "COSMAC/Events/ApplicationEvent.h"
 
-#include "COSMAC/ImGui/ImGuiLayer.h"
+#include "COSMAC/Core/Timestep.h"
 
-#include "COSMAC/Renderer/Shader.h"
-#include "COSMAC/Renderer/Buffer.h"
-#include "COSMAC/Renderer/VertexArray.h"
+#include "COSMAC/ImGui/ImGuiLayer.h"
 
 namespace COSMAC
 {
@@ -38,6 +36,7 @@ namespace COSMAC
 		ImGuiLayer* m_ImGuiLayer;
 		bool m_Running = true;
 		LayerStack m_LayerStack;
+		float m_LastFrameTime = 0.0f;
 
 		static Application *s_Instance;
 	};

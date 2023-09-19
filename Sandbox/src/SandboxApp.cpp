@@ -66,8 +66,11 @@ public:
 
 	}
 
-	void OnUpdate() override
+	void OnUpdate(COSMAC::Timestep ts) override
 	{
+		int fps = 1.0f / ts.GetSeconds();
+		COSMAC_TRACE("FPS: {0} | Delta time: {1}ms", fps, ts.GetMilliseconds());
+
         COSMAC::RenderCommand::SetClearColor({ 0.1f, 0.1f, 0.1f, 1.0f });
         COSMAC::RenderCommand::Clear();
 

@@ -1387,6 +1387,7 @@
       <Filter>vendor\glm\glm</Filter>
     </ClInclude>
     <ClInclude Include="src\COSMAC\Core\Timestep.h" />
+    <ClInclude Include="src\COSMAC\Renderer\OrthographicCamera.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\COSMAC\Application.cpp">
@@ -1446,5 +1447,6 @@
     <ClCompile Include="src\cpch.cpp">
       <Filter>src</Filter>
     </ClCompile>
+    <ClCompile Include="src\COSMAC\Renderer\OrthographicCamera.cpp" />
   </ItemGroup>
 </Project>

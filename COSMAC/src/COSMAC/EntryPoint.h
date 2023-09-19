@@ -4,7 +4,7 @@
 
 extern COSMAC::Application *COSMAC::CreateApplication();
 
-int WINAPI wWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, PWSTR pCmdLine, int nCmdShow)
+int main()
 {
 	COSMAC::Log::Init();
 

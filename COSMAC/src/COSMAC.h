@@ -18,6 +18,7 @@
 
 #include "COSMAC/Renderer/Buffer.h"
 #include "COSMAC/Renderer/Shader.h"
+#include "COSMAC/Renderer/Texture.h"
 #include "COSMAC/Renderer/VertexArray.h"
 
 #include "COSMAC/Renderer/OrthographicCamera.h"

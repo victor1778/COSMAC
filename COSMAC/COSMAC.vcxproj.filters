@@ -7,6 +7,9 @@
     <Filter Include="src\COSMAC">
       <UniqueIdentifier>{92E34B07-7E9B-8D54-E7A2-66B0D3792845}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\COSMAC\Core">
+      <UniqueIdentifier>{2A133C29-969E-A9ED-9FAF-2CE20BBA05EE}</UniqueIdentifier>
+    </Filter>
     <Filter Include="src\COSMAC\Events">
       <UniqueIdentifier>{3697AF6D-A2AD-AD03-EB24-3925577A7E8B}</UniqueIdentifier>
     </Filter>
@@ -51,14 +54,38 @@
     <ClInclude Include="src\COSMAC.h">
       <Filter>src</Filter>
     </ClInclude>
-    <ClInclude Include="src\COSMAC\Application.h">
-      <Filter>src\COSMAC</Filter>
+    <ClInclude Include="src\COSMAC\Core\Application.h">
+      <Filter>src\COSMAC\Core</Filter>
     </ClInclude>
-    <ClInclude Include="src\COSMAC\Core.h">
-      <Filter>src\COSMAC</Filter>
+    <ClInclude Include="src\COSMAC\Core\Core.h">
+      <Filter>src\COSMAC\Core</Filter>
     </ClInclude>
-    <ClInclude Include="src\COSMAC\EntryPoint.h">
-      <Filter>src\COSMAC</Filter>
+    <ClInclude Include="src\COSMAC\Core\EntryPoint.h">
+      <Filter>src\COSMAC\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\COSMAC\Core\Input.h">
+      <Filter>src\COSMAC\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\COSMAC\Core\KeyCodes.h">
+      <Filter>src\COSMAC\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\COSMAC\Core\Layer.h">
+      <Filter>src\COSMAC\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\COSMAC\Core\LayerStack.h">
+      <Filter>src\COSMAC\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\COSMAC\Core\Log.h">
+      <Filter>src\COSMAC\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\COSMAC\Core\MouseButtonCodes.h">
+      <Filter>src\COSMAC\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\COSMAC\Core\Timestep.h">
+      <Filter>src\COSMAC\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\COSMAC\Core\Window.h">
+      <Filter>src\COSMAC\Core</Filter>
     </ClInclude>
     <ClInclude Include="src\COSMAC\Events\ApplicationEvent.h">
       <Filter>src\COSMAC\Events</Filter>
@@ -75,28 +102,13 @@
     <ClInclude Include="src\COSMAC\ImGui\ImGuiLayer.h">
       <Filter>src\COSMAC\ImGui</Filter>
     </ClInclude>
-    <ClInclude Include="src\COSMAC\Input.h">
-      <Filter>src\COSMAC</Filter>
-    </ClInclude>
-    <ClInclude Include="src\COSMAC\KeyCodes.h">
-      <Filter>src\COSMAC</Filter>
-    </ClInclude>
-    <ClInclude Include="src\COSMAC\Layer.h">
-      <Filter>src\COSMAC</Filter>
-    </ClInclude>
-    <ClInclude Include="src\COSMAC\LayerStack.h">
-      <Filter>src\COSMAC</Filter>
-    </ClInclude>
-    <ClInclude Include="src\COSMAC\Log.h">
-      <Filter>src\COSMAC</Filter>
-    </ClInclude>
-    <ClInclude Include="src\COSMAC\MouseButtonCodes.h">
-      <Filter>src\COSMAC</Filter>
-    </ClInclude>
     <ClInclude Include="src\COSMAC\Renderer\Buffer.h">
       <Filter>src\COSMAC\Renderer</Filter>
     </ClInclude>
     <ClInclude Include="src\COSMAC\Renderer\GraphicsContext.h">
+      <Filter>src\COSMAC\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\COSMAC\Renderer\OrthographicCamera.h">
       <Filter>src\COSMAC\Renderer</Filter>
     </ClInclude>
     <ClInclude Include="src\COSMAC\Renderer\RenderCommand.h">
@@ -111,11 +123,11 @@
     <ClInclude Include="src\COSMAC\Renderer\Shader.h">
       <Filter>src\COSMAC\Renderer</Filter>
     </ClInclude>
-    <ClInclude Include="src\COSMAC\Renderer\VertexArray.h">
+    <ClInclude Include="src\COSMAC\Renderer\Texture.h">
       <Filter>src\COSMAC\Renderer</Filter>
     </ClInclude>
-    <ClInclude Include="src\COSMAC\Window.h">
-      <Filter>src\COSMAC</Filter>
+    <ClInclude Include="src\COSMAC\Renderer\VertexArray.h">
+      <Filter>src\COSMAC\Renderer</Filter>
     </ClInclude>
     <ClInclude Include="src\Platform\OpenGL\OpenGLBuffer.h">
       <Filter>src\Platform\OpenGL</Filter>
@@ -124,6 +136,12 @@
       <Filter>src\Platform\OpenGL</Filter>
     </ClInclude>
     <ClInclude Include="src\Platform\OpenGL\OpenGLRendererAPI.h">
+      <Filter>src\Platform\OpenGL</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Platform\OpenGL\OpenGLShader.h">
+      <Filter>src\Platform\OpenGL</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Platform\OpenGL\OpenGLTexture.h">
       <Filter>src\Platform\OpenGL</Filter>
     </ClInclude>
     <ClInclude Include="src\Platform\OpenGL\OpenGLVertexArray.h">
@@ -1386,15 +1404,19 @@
     <ClInclude Include="vendor\glm\glm\vector_relational.hpp">
       <Filter>vendor\glm\glm</Filter>
     </ClInclude>
-    <ClInclude Include="src\COSMAC\Core\Timestep.h" />
-    <ClInclude Include="src\COSMAC\Renderer\OrthographicCamera.h" />
-    <ClInclude Include="src\Platform\OpenGL\OpenGLShader.h" />
-    <ClInclude Include="src\COSMAC\Renderer\Texture.h" />
-    <ClInclude Include="src\Platform\OpenGL\OpenGLTexture.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\COSMAC\Application.cpp">
-      <Filter>src\COSMAC</Filter>
+    <ClCompile Include="src\COSMAC\Core\Application.cpp">
+      <Filter>src\COSMAC\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="src\COSMAC\Core\Layer.cpp">
+      <Filter>src\COSMAC\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="src\COSMAC\Core\LayerStack.cpp">
+      <Filter>src\COSMAC\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="src\COSMAC\Core\Log.cpp">
+      <Filter>src\COSMAC\Core</Filter>
     </ClCompile>
     <ClCompile Include="src\COSMAC\ImGui\ImGuiBuild.cpp">
       <Filter>src\COSMAC\ImGui</Filter>
@@ -1402,16 +1424,10 @@
     <ClCompile Include="src\COSMAC\ImGui\ImGuiLayer.cpp">
       <Filter>src\COSMAC\ImGui</Filter>
     </ClCompile>
-    <ClCompile Include="src\COSMAC\Layer.cpp">
-      <Filter>src\COSMAC</Filter>
-    </ClCompile>
-    <ClCompile Include="src\COSMAC\LayerStack.cpp">
-      <Filter>src\COSMAC</Filter>
-    </ClCompile>
-    <ClCompile Include="src\COSMAC\Log.cpp">
-      <Filter>src\COSMAC</Filter>
-    </ClCompile>
     <ClCompile Include="src\COSMAC\Renderer\Buffer.cpp">
+      <Filter>src\COSMAC\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\COSMAC\Renderer\OrthographicCamera.cpp">
       <Filter>src\COSMAC\Renderer</Filter>
     </ClCompile>
     <ClCompile Include="src\COSMAC\Renderer\RenderCommand.cpp">
@@ -1426,6 +1442,9 @@
     <ClCompile Include="src\COSMAC\Renderer\Shader.cpp">
       <Filter>src\COSMAC\Renderer</Filter>
     </ClCompile>
+    <ClCompile Include="src\COSMAC\Renderer\Texture.cpp">
+      <Filter>src\COSMAC\Renderer</Filter>
+    </ClCompile>
     <ClCompile Include="src\COSMAC\Renderer\VertexArray.cpp">
       <Filter>src\COSMAC\Renderer</Filter>
     </ClCompile>
@@ -1436,6 +1455,12 @@
       <Filter>src\Platform\OpenGL</Filter>
     </ClCompile>
     <ClCompile Include="src\Platform\OpenGL\OpenGLRendererAPI.cpp">
+      <Filter>src\Platform\OpenGL</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Platform\OpenGL\OpenGLShader.cpp">
+      <Filter>src\Platform\OpenGL</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Platform\OpenGL\OpenGLTexture.cpp">
       <Filter>src\Platform\OpenGL</Filter>
     </ClCompile>
     <ClCompile Include="src\Platform\OpenGL\OpenGLVertexArray.cpp">
@@ -1450,9 +1475,5 @@
     <ClCompile Include="src\cpch.cpp">
       <Filter>src</Filter>
     </ClCompile>
-    <ClCompile Include="src\COSMAC\Renderer\OrthographicCamera.cpp" />
-    <ClCompile Include="src\Platform\OpenGL\OpenGLShader.cpp" />
-    <ClCompile Include="src\COSMAC\Renderer\Texture.cpp" />
-    <ClCompile Include="src\Platform\OpenGL\OpenGLTexture.cpp" />
   </ItemGroup>
 </Project>

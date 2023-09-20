@@ -1,6 +1,6 @@
 #pragma once
 
-#include "COSMAC/Layer.h"
+#include "COSMAC/Core/Layer.h"
 
 #include "COSMAC/Events/ApplicationEvent.h"
 #include "COSMAC/Events/KeyEvent.h"

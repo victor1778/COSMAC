@@ -1,7 +1,7 @@
 #pragma once
 
 #include "cpch.h"
-#include "COSMAC/Core.h"
+#include "COSMAC/Core/Core.h"
 
 namespace COSMAC
 {

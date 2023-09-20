@@ -1,7 +1,7 @@
 #include "cpch.h"
 #include "WinInput.h"
 
-#include "COSMAC/Application.h"
+#include "COSMAC/Core/Application.h"
 #include "GLFW/glfw3.h"
 
 namespace COSMAC

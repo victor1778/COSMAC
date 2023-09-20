@@ -152,24 +152,23 @@
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="src\Platform\OpenGL\OpenGLTexture.h" />
-    <ClInclude Include="src\Platform\OpenGL\OpenGLShader.h" />
     <ClInclude Include="src\COSMAC.h" />
-    <ClInclude Include="src\COSMAC\Application.h" />
-    <ClInclude Include="src\COSMAC\Core.h" />
+    <ClInclude Include="src\COSMAC\Core\Application.h" />
+    <ClInclude Include="src\COSMAC\Core\Core.h" />
+    <ClInclude Include="src\COSMAC\Core\EntryPoint.h" />
+    <ClInclude Include="src\COSMAC\Core\Input.h" />
+    <ClInclude Include="src\COSMAC\Core\KeyCodes.h" />
+    <ClInclude Include="src\COSMAC\Core\Layer.h" />
+    <ClInclude Include="src\COSMAC\Core\LayerStack.h" />
+    <ClInclude Include="src\COSMAC\Core\Log.h" />
+    <ClInclude Include="src\COSMAC\Core\MouseButtonCodes.h" />
     <ClInclude Include="src\COSMAC\Core\Timestep.h" />
-    <ClInclude Include="src\COSMAC\EntryPoint.h" />
+    <ClInclude Include="src\COSMAC\Core\Window.h" />
     <ClInclude Include="src\COSMAC\Events\ApplicationEvent.h" />
     <ClInclude Include="src\COSMAC\Events\Event.h" />
     <ClInclude Include="src\COSMAC\Events\KeyEvent.h" />
     <ClInclude Include="src\COSMAC\Events\MouseEvent.h" />
     <ClInclude Include="src\COSMAC\ImGui\ImGuiLayer.h" />
-    <ClInclude Include="src\COSMAC\Input.h" />
-    <ClInclude Include="src\COSMAC\KeyCodes.h" />
-    <ClInclude Include="src\COSMAC\Layer.h" />
-    <ClInclude Include="src\COSMAC\LayerStack.h" />
-    <ClInclude Include="src\COSMAC\Log.h" />
-    <ClInclude Include="src\COSMAC\MouseButtonCodes.h" />
     <ClInclude Include="src\COSMAC\Renderer\Buffer.h" />
     <ClInclude Include="src\COSMAC\Renderer\GraphicsContext.h" />
     <ClInclude Include="src\COSMAC\Renderer\OrthographicCamera.h" />
@@ -177,16 +176,17 @@
     <ClInclude Include="src\COSMAC\Renderer\Renderer.h" />
     <ClInclude Include="src\COSMAC\Renderer\RendererAPI.h" />
     <ClInclude Include="src\COSMAC\Renderer\Shader.h" />
+    <ClInclude Include="src\COSMAC\Renderer\Texture.h" />
     <ClInclude Include="src\COSMAC\Renderer\VertexArray.h" />
-    <ClInclude Include="src\COSMAC\Window.h" />
     <ClInclude Include="src\Platform\OpenGL\OpenGLBuffer.h" />
     <ClInclude Include="src\Platform\OpenGL\OpenGLContext.h" />
     <ClInclude Include="src\Platform\OpenGL\OpenGLRendererAPI.h" />
+    <ClInclude Include="src\Platform\OpenGL\OpenGLShader.h" />
+    <ClInclude Include="src\Platform\OpenGL\OpenGLTexture.h" />
     <ClInclude Include="src\Platform\OpenGL\OpenGLVertexArray.h" />
     <ClInclude Include="src\Platform\Windows\WinInput.h" />
     <ClInclude Include="src\Platform\Windows\WinWindow.h" />
     <ClInclude Include="src\cpch.h" />
-    <ClInclude Include="src\COSMAC\Renderer\Texture.h" />
     <ClInclude Include="vendor\glm\glm\common.hpp" />
     <ClInclude Include="vendor\glm\glm\detail\_features.hpp" />
     <ClInclude Include="vendor\glm\glm\detail\_fixes.hpp" />
@@ -605,31 +605,31 @@
     <ClInclude Include="vendor\glm\glm\vector_relational.hpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\Platform\OpenGL\OpenGLTexture.cpp" />
-    <ClCompile Include="src\Platform\OpenGL\OpenGLShader.cpp" />
-    <ClCompile Include="src\COSMAC\Application.cpp" />
+    <ClCompile Include="src\COSMAC\Core\Application.cpp" />
+    <ClCompile Include="src\COSMAC\Core\Layer.cpp" />
+    <ClCompile Include="src\COSMAC\Core\LayerStack.cpp" />
+    <ClCompile Include="src\COSMAC\Core\Log.cpp" />
     <ClCompile Include="src\COSMAC\ImGui\ImGuiBuild.cpp" />
     <ClCompile Include="src\COSMAC\ImGui\ImGuiLayer.cpp" />
-    <ClCompile Include="src\COSMAC\Layer.cpp" />
-    <ClCompile Include="src\COSMAC\LayerStack.cpp" />
-    <ClCompile Include="src\COSMAC\Log.cpp" />
     <ClCompile Include="src\COSMAC\Renderer\Buffer.cpp" />
     <ClCompile Include="src\COSMAC\Renderer\OrthographicCamera.cpp" />
     <ClCompile Include="src\COSMAC\Renderer\RenderCommand.cpp" />
     <ClCompile Include="src\COSMAC\Renderer\Renderer.cpp" />
     <ClCompile Include="src\COSMAC\Renderer\RendererAPI.cpp" />
     <ClCompile Include="src\COSMAC\Renderer\Shader.cpp" />
+    <ClCompile Include="src\COSMAC\Renderer\Texture.cpp" />
     <ClCompile Include="src\COSMAC\Renderer\VertexArray.cpp" />
     <ClCompile Include="src\Platform\OpenGL\OpenGLBuffer.cpp" />
     <ClCompile Include="src\Platform\OpenGL\OpenGLContext.cpp" />
     <ClCompile Include="src\Platform\OpenGL\OpenGLRendererAPI.cpp" />
+    <ClCompile Include="src\Platform\OpenGL\OpenGLShader.cpp" />
+    <ClCompile Include="src\Platform\OpenGL\OpenGLTexture.cpp" />
     <ClCompile Include="src\Platform\OpenGL\OpenGLVertexArray.cpp" />
     <ClCompile Include="src\Platform\Windows\WinInput.cpp" />
     <ClCompile Include="src\Platform\Windows\WinWindow.cpp" />
     <ClCompile Include="src\cpch.cpp">
       <PrecompiledHeader>Create</PrecompiledHeader>
     </ClCompile>
-    <ClCompile Include="src\COSMAC\Renderer\Texture.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="vendor\GLFW\GLFW.vcxproj">

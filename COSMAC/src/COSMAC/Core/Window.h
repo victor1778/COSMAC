@@ -4,7 +4,7 @@
 #include "cpch.h"
 
 // Include necessary headers
-#include "COSMAC/Core.h"
+#include "COSMAC/Core/Core.h"
 #include "COSMAC/Events/Event.h"
 
 namespace COSMAC

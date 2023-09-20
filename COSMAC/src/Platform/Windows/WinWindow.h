@@ -1,6 +1,6 @@
 #pragma once
 
-#include "COSMAC/Window.h"
+#include "COSMAC/Core/Window.h"
 #include "COSMAC/Renderer/GraphicsContext.h"
 
 #include <GLFW/glfw3.h>

@@ -1,14 +1,14 @@
 #pragma once
 
-#include "COSMAC/Application.h"
-#include "COSMAC/Layer.h"
-#include "COSMAC/Log.h"
+#include "COSMAC/Core/Application.h"
+#include "COSMAC/Core/Layer.h"
+#include "COSMAC/Core/Log.h"
 
 #include "COSMAC/Core/Timestep.h"
 
-#include "COSMAC/Input.h"
-#include "COSMAC/KeyCodes.h"
-#include "COSMAC/MouseButtonCodes.h"
+#include "COSMAC/Core/Input.h"
+#include "COSMAC/Core/KeyCodes.h"
+#include "COSMAC/Core/MouseButtonCodes.h"
 
 #include "COSMAC/ImGui/ImGuiLayer.h"
 
@@ -24,4 +24,4 @@
 #include "COSMAC/Renderer/OrthographicCamera.h"
 
 // -----Entry Point-----
-#include "COSMAC/EntryPoint.h"
+#include "COSMAC/Core/EntryPoint.h"

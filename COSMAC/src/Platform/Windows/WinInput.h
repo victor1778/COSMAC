@@ -1,6 +1,6 @@
 #pragma once
 
-#include "COSMAC/Input.h"
+#include "COSMAC/Core/Input.h"
 
 namespace COSMAC
 {

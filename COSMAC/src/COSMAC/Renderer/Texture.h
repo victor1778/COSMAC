@@ -2,7 +2,7 @@
 
 #include <string>
 
-#include "COSMAC/Core.h"
+#include "COSMAC/Core/Core.h"
 
 namespace COSMAC
 {

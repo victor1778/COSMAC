@@ -1,6 +1,6 @@
 #pragma once
 
-#include "COSMAC/Core.h"
+#include "COSMAC/Core/Core.h"
 #include "Layer.h"
 
 #include <vector>

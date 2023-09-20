@@ -1,4 +1,4 @@
-![image](https://github.com/victor1778/COSMAC/assets/68914862/8e8a0f69-0f5d-472f-a710-fa347f21a661)
+![image](https://github.com/victor1778/COSMAC/assets/68914862/f0394dcc-9f3c-4411-8a8c-e5fdd6bd8583)
 
 # COSMAC
 The COSMAC Chip-8 Emulator is a C++ project that aims to bring back the nostalgic charm of early computing by emulating the CHIP-8 system. The project takes its name from the COSMAC VIP, a pioneering microcomputer from the 1970s that introduced many enthusiasts to the world of computing. This emulator serves as a tribute to those early days while utilizing modern programming techniques.

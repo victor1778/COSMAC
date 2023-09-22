@@ -4,9 +4,7 @@
 
 namespace COSMAC
 {
-	/// <summary>
-	///  Mouse event class for move event and scroll event
-	/// </summary>
+
 	class COSMAC_API MouseMovedEvent : public Event
 	{
 	public:
@@ -63,9 +61,7 @@ namespace COSMAC
 
 		int m_Button;
 	};
-	/// <summary>
-	///  Mouse class that handles mouse button pressed event
-	/// </summary>
+
 	class COSMAC_API MouseButtonPressedEvent : public MouseButtonEvent
 	{
 	public:

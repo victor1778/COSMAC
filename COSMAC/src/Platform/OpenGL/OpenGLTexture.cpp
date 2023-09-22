@@ -5,27 +5,13 @@
 
 namespace COSMAC
 {
-	OpenGLTexture::OpenGLTexture()
+	OpenGLTexture::OpenGLTexture(uint32_t* data)
 	{
-		const int w = 64, h = 32;
-		uint32_t data[w * h];
-
-		for (int y = 0; y < h; ++y)
-		{
-			for (int x = 0; x < w; ++x)
-			{
-				if ((x + y) % 2 == 0)
-					data[y * w + x] = 0xFFFFFFFF;
-				else
-					data[y * w + x] = 0x00000000;
-			}
-		}
-
-		m_Width = w;
-		m_Height = h;
+		m_Width = 64;
+		m_Height = 32;
 
 		glCreateTextures(GL_TEXTURE_2D, 1, &m_RendererID);
-		glTextureStorage2D(m_RendererID, 1, GL_RGB8, m_Width, m_Height);
+		glTextureStorage2D(m_RendererID, 1, GL_RGBA8, m_Width, m_Height);
 
 		glTextureParameteri(m_RendererID, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
 		glTextureParameteri(m_RendererID, GL_TEXTURE_MAG_FILTER, GL_NEAREST);

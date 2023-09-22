@@ -22,6 +22,3 @@
 #include "COSMAC/Renderer/VertexArray.h"
 
 #include "COSMAC/Renderer/OrthographicCamera.h"
-
-// -----Entry Point-----
-#include "COSMAC/Core/EntryPoint.h"

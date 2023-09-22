@@ -6,7 +6,7 @@
 
 namespace COSMAC
 {
-	Ref<Texture> Texture::Create()
+	Ref<Texture> Texture::Create(uint32_t* data)
 	{
 		switch (Renderer::GetAPI())
 		{
@@ -14,7 +14,7 @@ namespace COSMAC
 			COSMAC_CORE_ASSERT(false, "RendererAPI::None is currently not supported!");
 			return nullptr;
 		case RendererAPI::API::OpenGL:
-			return std::make_shared<OpenGLTexture>();
+			return std::make_shared<OpenGLTexture>(data);
 		}
 
 		COSMAC_CORE_ASSERT(false, "Unknown RendererAPI!");

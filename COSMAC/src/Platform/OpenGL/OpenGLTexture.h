@@ -8,7 +8,7 @@ namespace COSMAC
 	class OpenGLTexture : public Texture
 	{
 	public:
-		OpenGLTexture();
+		OpenGLTexture(uint32_t* data);
 		virtual ~OpenGLTexture();
 
 		virtual uint32_t GetWidth() const override { return m_Width; }

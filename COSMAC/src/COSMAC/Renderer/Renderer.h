@@ -1,9 +1,8 @@
 #pragma once
 
-#include "RenderCommand.h"
-
-#include "OrthographicCamera.h"
-#include "Shader.h"
+#include "COSMAC/Renderer/RenderCommand.h"
+#include "COSMAC/Renderer/OrthographicCamera.h"
+#include "COSMAC/Renderer/Shader.h"
 
 namespace COSMAC
 {
@@ -12,6 +11,8 @@ namespace COSMAC
 	{
 	public:
 		static void OnWindowResize(uint32_t width, uint32_t height);
+
+		static void Init();
 
 		static void BeginScene(OrthographicCamera& camera);
 		static void EndScene();
@@ -26,7 +27,7 @@ namespace COSMAC
 			glm::mat4 ViewProjectionMatrix;
 		};
 
-		static SceneData* m_SceneData;
+		static Scope<SceneData> s_SceneData;
 	};
 
 }

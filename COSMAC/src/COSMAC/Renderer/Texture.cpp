@@ -1,7 +1,7 @@
 #include "cpch.h"
-#include "Texture.h"
 
-#include "Renderer.h"
+#include "COSMAC/Renderer/Texture.h"
+#include "COSMAC/Renderer/Renderer.h"
 #include "Platform/OpenGL/OpenGLTexture.h"
 
 namespace COSMAC
@@ -12,9 +12,9 @@ namespace COSMAC
 		{
 		case RendererAPI::API::None:
 			COSMAC_CORE_ASSERT(false, "RendererAPI::None is currently not supported!");
-			return nullptr;
+			break;
 		case RendererAPI::API::OpenGL:
-			return std::make_shared<OpenGLTexture>(data);
+			return CreateRef<OpenGLTexture>(data);
 		}
 
 		COSMAC_CORE_ASSERT(false, "Unknown RendererAPI!");

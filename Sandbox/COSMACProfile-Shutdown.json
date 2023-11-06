@@ -1,0 +1,1 @@
+{"otherData": {},"traceEvents":[{"cat":"function","dur":1,"name":"void __cdecl EmulationLayer::OnDetach(void)","ph":"X","pid":0,"tid":477841573,"ts":2220215447817},{"cat":"function","dur":1,"name":"__cdecl COSMAC::OpenGLShader::~OpenGLShader(void)","ph":"X","pid":0,"tid":477841573,"ts":2220215448388}]}

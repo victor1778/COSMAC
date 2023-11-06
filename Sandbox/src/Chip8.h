@@ -1,36 +1,41 @@
 #pragma once
 
+#include "COSMAC.h"
+
+#include <stack>
 #include <array>
+#include <string>
 
 class Chip8
 {
 public:
 	std::array<uint32_t, 64 * 32> framebuffer;
+	std::array<uint16_t, 16> keypad;
 
 	Chip8();
-	~Chip8();
+	~Chip8() {}
 
-	bool LoadProgram();
+	void Restart();
+	bool LoadProgram(const std::string& path);
 	void FetchOpcode();
 	void Tick();
+	void UpdateTimers();
+
+	//aux fxns
+	std::string decToHex(int num);
+
+	bool PAUSE = true;
+	bool DRAW = false;
 
 private:
-	// 0x000 - 0x1FF - Chip 8 interpreter(contains font set in emu)
-	// 0x050 - 0x0A0 - Used for the built in 4x5 pixel font set(0 - F)
-	// 0x200 - 0xFFF - Program ROM and work RAM
 	std::array<uint8_t, 4096> memory;
-
-	//16 general purpose 8-bit registers
 	std::array<uint8_t, 16> V;
-
-	//16 16-bit value stack
-	std::array<uint16_t, 16> stack;
+	std::stack<uint16_t> stack;
 
 	uint16_t I;
 	uint16_t PC;
 	uint8_t SP;
-	uint8_t DT;
-	uint8_t ST;
+	uint8_t DT, ST;
 
 	uint16_t opcode;
 

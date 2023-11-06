@@ -1,5 +1,6 @@
 #include "cpch.h"
-#include "OpenGLContext.h"
+
+#include "Platform/OpenGL/OpenGLContext.h"
 
 #include <GLFW/glfw3.h>
 #include <glad/glad.h>

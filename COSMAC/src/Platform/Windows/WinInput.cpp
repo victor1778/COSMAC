@@ -1,12 +1,13 @@
 #include "cpch.h"
-#include "WinInput.h"
 
+#include "Platform/Windows/WinInput.h"
 #include "COSMAC/Core/Application.h"
-#include "GLFW/glfw3.h"
+
+#include <GLFW/glfw3.h>
 
 namespace COSMAC
 {
-	Input *Input::s_instance = new WinInput();
+	Scope<Input> Input::s_instance = CreateScope<WinInput>();
 
 	bool WinInput::IsKeyPressedImpl(int keycode)
 	{

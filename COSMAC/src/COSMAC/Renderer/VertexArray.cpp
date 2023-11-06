@@ -1,20 +1,21 @@
 #include "cpch.h"
-#include "VertexArray.h"
 
-#include "Renderer.h"
+#include "COSMAC/Renderer/VertexArray.h"
+#include "COSMAC/Renderer/Renderer.h"
 #include "Platform/OpenGL/OpenGLVertexArray.h"
 
-namespace COSMAC {
+namespace COSMAC
+{
 
-	VertexArray* VertexArray::Create()
+	Ref<VertexArray> VertexArray::Create()
 	{
 		switch (Renderer::GetAPI())
 		{
 		case RendererAPI::API::None:
 			COSMAC_CORE_ASSERT(false, "RendererAPI::None is currently not supported!");
-			return nullptr;
+			break;
 		case RendererAPI::API::OpenGL:
-			return new OpenGLVertexArray();
+			return CreateRef<OpenGLVertexArray>();
 		}
 
 		COSMAC_CORE_ASSERT(false, "Unknown RendererAPI!");

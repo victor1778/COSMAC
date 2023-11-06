@@ -1,7 +1,8 @@
 workspace "COSMAC"
-   architecture "x64"
-   startproject "Sandbox"
-   configurations { "Debug", "Release", "Dist" }
+	architecture "x64"
+	startproject "Sandbox"
+	configurations { "Debug", "Release", "Dist" }
+	flags { "MultiProcessorCompile" }
 
 outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 
@@ -40,9 +41,9 @@ project "COSMAC"
 	filter "system:windows"
 		systemversion "latest"
 
-		defines { "COSMAC_PLATFORM_WINDOWS", "COSMAC_BUILD_DLL", "GLFW_INCLUDE_NONE" }
+		defines { "COSMAC_BUILD_DLL", "GLFW_INCLUDE_NONE" }
 
-		postbuildcommands { "{COPY} %{cfg.buildtarget.relpath} \"../bin/" .. outputdir .. "/Sandbox/\""}
+		postbuildcommands { "{COPY} %{cfg.buildtarget.relpath} \"../bin/" .. outputdir .. "/Sandbox/\"" }
 
 	filter "configurations:Debug"
 		defines "COSMAC_DEBUG"
@@ -78,8 +79,6 @@ project "Sandbox"
 
 	filter "system:windows"
 		systemversion "latest"
-
-		defines { "COSMAC_PLATFORM_WINDOWS" }
 
 	filter "configurations:Debug"
 		defines "COSMAC_DEBUG"

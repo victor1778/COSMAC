@@ -2,12 +2,11 @@
 
 #include "COSMAC/Core/Core.h"
 #include "COSMAC/Events/Event.h"
-
 #include "COSMAC/Core/Timestep.h"
 
 namespace COSMAC
 {
-	class COSMAC_API Layer
+	class Layer
 	{
 	public:
 		Layer(const std::string &name = "Layer");

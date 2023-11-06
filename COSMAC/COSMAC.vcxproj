@@ -76,11 +76,13 @@
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>cpch.h</PrecompiledHeaderFile>
       <WarningLevel>Level3</WarningLevel>
-      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;COSMAC_PLATFORM_WINDOWS;COSMAC_BUILD_DLL;GLFW_INCLUDE_NONE;COSMAC_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;COSMAC_BUILD_DLL;GLFW_INCLUDE_NONE;COSMAC_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>vendor\spdlog\include;src;vendor\GLFW\include;vendor\Glad\include;vendor\imgui;vendor\glm;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
       <Optimization>Disabled</Optimization>
+      <MinimalRebuild>false</MinimalRebuild>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <LanguageStandard>stdcpp17</LanguageStandard>
       <ExternalWarningLevel>Level3</ExternalWarningLevel>
     </ClCompile>
@@ -100,7 +102,7 @@
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>cpch.h</PrecompiledHeaderFile>
       <WarningLevel>Level3</WarningLevel>
-      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;COSMAC_PLATFORM_WINDOWS;COSMAC_BUILD_DLL;GLFW_INCLUDE_NONE;COSMAC_RELEASE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;COSMAC_BUILD_DLL;GLFW_INCLUDE_NONE;COSMAC_RELEASE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>vendor\spdlog\include;src;vendor\GLFW\include;vendor\Glad\include;vendor\imgui;vendor\glm;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <Optimization>Full</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
@@ -108,6 +110,7 @@
       <MinimalRebuild>false</MinimalRebuild>
       <StringPooling>true</StringPooling>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <LanguageStandard>stdcpp17</LanguageStandard>
       <ExternalWarningLevel>Level3</ExternalWarningLevel>
     </ClCompile>
@@ -128,7 +131,7 @@
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>cpch.h</PrecompiledHeaderFile>
       <WarningLevel>Level3</WarningLevel>
-      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;COSMAC_PLATFORM_WINDOWS;COSMAC_BUILD_DLL;GLFW_INCLUDE_NONE;COSMAC_DIST;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;COSMAC_BUILD_DLL;GLFW_INCLUDE_NONE;COSMAC_DIST;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>vendor\spdlog\include;src;vendor\GLFW\include;vendor\Glad\include;vendor\imgui;vendor\glm;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <Optimization>Full</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
@@ -136,6 +139,7 @@
       <MinimalRebuild>false</MinimalRebuild>
       <StringPooling>true</StringPooling>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <LanguageStandard>stdcpp17</LanguageStandard>
       <ExternalWarningLevel>Level3</ExternalWarningLevel>
     </ClCompile>
@@ -164,12 +168,14 @@
     <ClInclude Include="src\COSMAC\Core\MouseButtonCodes.h" />
     <ClInclude Include="src\COSMAC\Core\Timestep.h" />
     <ClInclude Include="src\COSMAC\Core\Window.h" />
+    <ClInclude Include="src\COSMAC\Debug\Instrumentor.h" />
     <ClInclude Include="src\COSMAC\Events\ApplicationEvent.h" />
     <ClInclude Include="src\COSMAC\Events\Event.h" />
     <ClInclude Include="src\COSMAC\Events\KeyEvent.h" />
     <ClInclude Include="src\COSMAC\Events\MouseEvent.h" />
     <ClInclude Include="src\COSMAC\ImGui\ImGuiLayer.h" />
     <ClInclude Include="src\COSMAC\Renderer\Buffer.h" />
+    <ClInclude Include="src\COSMAC\Renderer\Framebuffer.h" />
     <ClInclude Include="src\COSMAC\Renderer\GraphicsContext.h" />
     <ClInclude Include="src\COSMAC\Renderer\OrthographicCamera.h" />
     <ClInclude Include="src\COSMAC\Renderer\RenderCommand.h" />
@@ -178,8 +184,10 @@
     <ClInclude Include="src\COSMAC\Renderer\Shader.h" />
     <ClInclude Include="src\COSMAC\Renderer\Texture.h" />
     <ClInclude Include="src\COSMAC\Renderer\VertexArray.h" />
+    <ClInclude Include="src\COSMAC\Utils\PlatformUtils.h" />
     <ClInclude Include="src\Platform\OpenGL\OpenGLBuffer.h" />
     <ClInclude Include="src\Platform\OpenGL\OpenGLContext.h" />
+    <ClInclude Include="src\Platform\OpenGL\OpenGLFramebuffer.h" />
     <ClInclude Include="src\Platform\OpenGL\OpenGLRendererAPI.h" />
     <ClInclude Include="src\Platform\OpenGL\OpenGLShader.h" />
     <ClInclude Include="src\Platform\OpenGL\OpenGLTexture.h" />
@@ -612,6 +620,8 @@
     <ClCompile Include="src\COSMAC\ImGui\ImGuiBuild.cpp" />
     <ClCompile Include="src\COSMAC\ImGui\ImGuiLayer.cpp" />
     <ClCompile Include="src\COSMAC\Renderer\Buffer.cpp" />
+    <ClCompile Include="src\COSMAC\Renderer\Framebuffer.cpp" />
+    <ClCompile Include="src\COSMAC\Renderer\GraphicsContext.cpp" />
     <ClCompile Include="src\COSMAC\Renderer\OrthographicCamera.cpp" />
     <ClCompile Include="src\COSMAC\Renderer\RenderCommand.cpp" />
     <ClCompile Include="src\COSMAC\Renderer\Renderer.cpp" />
@@ -621,11 +631,13 @@
     <ClCompile Include="src\COSMAC\Renderer\VertexArray.cpp" />
     <ClCompile Include="src\Platform\OpenGL\OpenGLBuffer.cpp" />
     <ClCompile Include="src\Platform\OpenGL\OpenGLContext.cpp" />
+    <ClCompile Include="src\Platform\OpenGL\OpenGLFramebuffer.cpp" />
     <ClCompile Include="src\Platform\OpenGL\OpenGLRendererAPI.cpp" />
     <ClCompile Include="src\Platform\OpenGL\OpenGLShader.cpp" />
     <ClCompile Include="src\Platform\OpenGL\OpenGLTexture.cpp" />
     <ClCompile Include="src\Platform\OpenGL\OpenGLVertexArray.cpp" />
     <ClCompile Include="src\Platform\Windows\WinInput.cpp" />
+    <ClCompile Include="src\Platform\Windows\WinPlatformUtils.cpp" />
     <ClCompile Include="src\Platform\Windows\WinWindow.cpp" />
     <ClCompile Include="src\cpch.cpp">
       <PrecompiledHeader>Create</PrecompiledHeader>

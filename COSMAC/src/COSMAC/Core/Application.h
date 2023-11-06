@@ -1,8 +1,8 @@
 #pragma once
 
-#include "Core.h"
+#include "COSMAC/Core/Core.h"
 
-#include "Window.h"
+#include "COSMAC/Core/Window.h"
 #include "COSMAC/Core/LayerStack.h"
 #include "COSMAC/Events/Event.h"
 #include "COSMAC/Events/ApplicationEvent.h"
@@ -11,15 +11,20 @@
 
 #include "COSMAC/ImGui/ImGuiLayer.h"
 
+#ifdef COSMAC_DEBUG
+int main(int argc, char** argv);
+#else
+int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance,
+	PSTR lpCmdLine, int nCmdShow);
+#endif
+
 namespace COSMAC
 {
-	class COSMAC_API Application
+	class Application
 	{
 	public:
 		Application();
 		virtual ~Application();
-
-		void Run();
 
 		void OnEvent(Event &e);
 
@@ -27,9 +32,15 @@ namespace COSMAC
 		void PushOverlay(Layer *layer);
 
 		inline Window &GetWindow() { return *m_Window; }
+
+		inline void Close() { m_Running = false; }
+
+		ImGuiLayer* GetImGuiLayer() { return m_ImGuiLayer; }
+
 		inline static Application &Get() { return *s_Instance; }
 
 	private:
+		void Run();
 		bool OnWindowClose(WindowCloseEvent &e);
 		bool OnWindowResize(WindowResizeEvent& e);
 
@@ -41,6 +52,12 @@ namespace COSMAC
 		float m_LastFrameTime = 0.0f;
 
 		static Application *s_Instance;
+
+		#ifdef COSMAC_DEBUG
+			friend int::main(int argc, char** argv);
+		#else
+			friend int WINAPI::WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, PSTR lpCmdLine, int nCmdShow);
+		#endif
 	};
 
 	Application *CreateApplication();

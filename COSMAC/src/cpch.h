@@ -14,6 +14,8 @@
 
 #include "COSMAC/Core/Log.h"
 
+#include "COSMAC/Debug/Instrumentor.h"
+
 #ifdef COSMAC_PLATFORM_WINDOWS
 	#include <Windows.h>
 #endif

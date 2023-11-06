@@ -1,17 +1,17 @@
 #pragma once
 
 #include "COSMAC/Core/Core.h"
-#include "Layer.h"
+#include "COSMAC/Core/Layer.h"
 
 #include <vector>
 
 namespace COSMAC
 {
 
-	class COSMAC_API LayerStack
+	class LayerStack
 	{
 	public:
-		LayerStack();
+		LayerStack() = default;
 		~LayerStack();
 
 		void PushLayer(Layer *layer);

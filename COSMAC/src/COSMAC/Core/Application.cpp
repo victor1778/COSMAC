@@ -1,15 +1,14 @@
 #include "cpch.h"
-#include "Application.h"
+#include "COSMAC/Core/Application.h"
 
 #include "COSMAC/Renderer/Renderer.h"
 
-#include "Input.h"
+#include "COSMAC/Core/Input.h"
 
 #include <GLFW/glfw3.h>
 
 namespace COSMAC
 {
-#define BIND_EVENT_FN(x) std::bind(&x, this, std::placeholders::_1)
 
 	Application *Application::s_Instance = nullptr;
 
@@ -18,8 +17,10 @@ namespace COSMAC
 		COSMAC_CORE_ASSERT(!s_Instance, "Application already exists!");
 		s_Instance = this;
 
-		m_Window = std::unique_ptr<Window>(Window::Create());
-		m_Window->SetEventCallback(BIND_EVENT_FN(Application::OnEvent));
+		m_Window = Window::Create();
+		m_Window->SetEventCallback(COSMAC_BIND_EVENT_FN(Application::OnEvent));
+
+		Renderer::Init();
 
 		m_ImGuiLayer = new ImGuiLayer();
 		PushOverlay(m_ImGuiLayer);
@@ -42,8 +43,8 @@ namespace COSMAC
 	void Application::OnEvent(Event &e)
 	{
 		EventDispatcher dispatcher(e);
-		dispatcher.Dispatch<WindowCloseEvent>(BIND_EVENT_FN(Application::OnWindowClose));
-		dispatcher.Dispatch<WindowResizeEvent>(BIND_EVENT_FN(Application::OnWindowResize));
+		dispatcher.Dispatch<WindowCloseEvent>(COSMAC_BIND_EVENT_FN(Application::OnWindowClose));
+		dispatcher.Dispatch<WindowResizeEvent>(COSMAC_BIND_EVENT_FN(Application::OnWindowResize));
 
 		COSMAC_CORE_INFO("{0}", e);
 
@@ -57,12 +58,12 @@ namespace COSMAC
 
 	void Application::Run()
 	{
+		float time = (float)glfwGetTime();
+		Timestep timestep = time - m_LastFrameTime;
+		m_LastFrameTime = time;
+
 		while (m_Running)
 		{
-			float time = (float)glfwGetTime();
-			Timestep timestep = time - m_LastFrameTime;
-			m_LastFrameTime = time;
-
 			if (!m_Minimized)
 			{
 				for (Layer* layer : m_LayerStack)

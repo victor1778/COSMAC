@@ -1,15 +1,12 @@
 #pragma once
 
-// Precompiled header
 #include "cpch.h"
 
-// Include necessary headers
 #include "COSMAC/Core/Core.h"
 #include "COSMAC/Events/Event.h"
 
 namespace COSMAC
 {
-
 	// Define a structure to hold window properties
 	struct WindowProps
 	{
@@ -18,21 +15,21 @@ namespace COSMAC
 		unsigned int Height;
 
 		// Constructor with default values for title, width, and height
-		WindowProps(const std::string &title = "COSMAC Emulator", unsigned int width = 1280, unsigned int height = 720)
+		WindowProps(const std::string &title = "COSMAC Emulator v0.1.0-beta", unsigned int width = 1280, unsigned int height = 720)
 			: Title(title), Width(width), Height(height)
 		{
 		}
 	};
 
 	// Declare a class for managing windows
-	class COSMAC_API Window
+	class Window
 	{
 	public:
 		// Define a function signature for event callback
 		using EventCallbackFn = std::function<void(Event &)>;
 
 		// Destructor (to be implemented by derived classes)
-		virtual ~Window() {}
+		virtual ~Window() = default;
 
 		// Pure virtual function to be implemented by derived classes for updating the window
 		virtual void OnUpdate() = 0;
@@ -51,6 +48,8 @@ namespace COSMAC
 		virtual void *GetNativeWindow() const = 0;
 
 		// Static function to create a window instance with specified properties
-		static Window *Create(const WindowProps &props = WindowProps());
+		static Scope<Window> Create(const WindowProps &props = WindowProps());
+
+		static float s_UIScaleFactor;
 	};
 }

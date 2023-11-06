@@ -1,11 +1,11 @@
 #pragma once
 
-#include "Event.h"
+#include "COSMAC/Events/Event.h"
 
 namespace COSMAC
 {
 
-	class COSMAC_API KeyEvent : public Event
+	class KeyEvent : public Event
 	{
 	public:
 		inline int GetKeyCode() const { return m_KeyCode; }
@@ -18,7 +18,7 @@ namespace COSMAC
 		int m_KeyCode;
 	};
 
-	class COSMAC_API KeyPressedEvent : public KeyEvent
+	class KeyPressedEvent : public KeyEvent
 	{
 	public:
 		KeyPressedEvent(int keycode, int repeatCount)
@@ -38,7 +38,7 @@ namespace COSMAC
 		int m_RepeatCount;
 	};
 
-	class COSMAC_API KeyReleasedEvent : public KeyEvent
+	class KeyReleasedEvent : public KeyEvent
 	{
 	public:
 		KeyReleasedEvent(int keycode)
@@ -54,7 +54,7 @@ namespace COSMAC
 		EVENT_CLASS_TYPE(KeyReleased)
 	};
 
-	class COSMAC_API KeyTypedEvent : public KeyEvent
+	class KeyTypedEvent : public KeyEvent
 	{
 	public:
 		KeyTypedEvent(int keycode)

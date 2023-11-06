@@ -1,6 +1,6 @@
 #pragma once
 
-#include "RendererAPI.h"
+#include "COSMAC/Renderer/RendererAPI.h"
 
 namespace COSMAC
 {
@@ -8,6 +8,11 @@ namespace COSMAC
 	class RenderCommand
 	{
 	public:
+		inline static void Init()
+		{
+			s_RendererAPI->Init();
+		}
+
 		inline static void SetClearColor(const glm::vec4& color = { 0.0f, 0.0f, 0.0f, 0.0f })
 		{
 			s_RendererAPI->SetClearColor(color);
@@ -29,7 +34,7 @@ namespace COSMAC
 		}
 
 	private:
-		static RendererAPI* s_RendererAPI;
+		static Scope<RendererAPI> s_RendererAPI;
 	};
 
 }

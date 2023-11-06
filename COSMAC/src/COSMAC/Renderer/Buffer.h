@@ -23,7 +23,8 @@ namespace COSMAC
 			return sizeof(float) * 3 * 3;
 		case ShaderDataType::Mat4:
 			return sizeof(float) * 4 * 4;
-		case ShaderDataType::Int:return sizeof(int);
+		case ShaderDataType::Int:
+			return sizeof(int);
 		case ShaderDataType::Int2:
 			return sizeof(int) * 2;
 		case ShaderDataType::Int3:
@@ -43,10 +44,10 @@ namespace COSMAC
 		std::string Name;
 		ShaderDataType Type;
 		uint32_t Size;
-		uint32_t Offset;
+		size_t Offset;
 		bool Normalized;
 
-		BufferElement() {}
+		BufferElement() = default;
 
 		BufferElement(ShaderDataType type, const std::string& name, bool normalized = false)
 			: Name(name), Type(type), Size(ShaderDataTypeSize(type)), Offset(0), Normalized(normalized)
@@ -107,7 +108,7 @@ namespace COSMAC
 	private:
 		void CalculateOffsetsAndStride()
 		{
-			uint32_t offset = 0;
+			size_t offset = 0;
 			m_Stride = 0;
 			for (auto& element : m_Elements)
 			{
@@ -124,26 +125,28 @@ namespace COSMAC
 	class VertexBuffer
 	{
 	public:
-		static VertexBuffer* Create(float* vertices, uint32_t size);
-		virtual ~VertexBuffer() {}
+		virtual ~VertexBuffer() = default;
 
 		virtual void Bind() const = 0;
 		virtual void Unbind() const = 0;
 
 		virtual const BufferLayout& GetLayout() const = 0;
 		virtual void SetLayout(const BufferLayout& layout) = 0;
+
+		static Ref<VertexBuffer> Create(float* vertices, uint32_t size);
 	};
 
 	class IndexBuffer
 	{
 	public:
-		static IndexBuffer* Create(uint32_t* indices, uint32_t size);
-		virtual ~IndexBuffer() {}
+		virtual ~IndexBuffer() = default;
 
 		virtual uint32_t GetCount() const = 0;
 
 		virtual void Bind() const = 0;
 		virtual void Unbind() const = 0;
+
+		static Ref<IndexBuffer> Create(uint32_t* indices, uint32_t size);
 	};
 
 }
